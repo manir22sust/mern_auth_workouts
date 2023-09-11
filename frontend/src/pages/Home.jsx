@@ -5,6 +5,7 @@ import { WorkoutDetails } from "../components/WorkoutDetails";
 import { WorkoutForm } from "../components/WorkoutForm";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { API_BASE_URL } from "../utils/url";
 
 export const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext();
@@ -12,7 +13,7 @@ export const Home = () => {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch("/api/workouts", {
+      const response = await fetch(`${API_BASE_URL}/api/workouts`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
